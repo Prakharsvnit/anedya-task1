@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -21,7 +22,7 @@ const Login = () => {
       default_password === formData.password
     ) {
       localStorage.setItem("isUserLoggedIn", true);
-      window.location.href = "/home";
+      navigate("/home");
     } else {
       alert("Invalid username or password");
     }
