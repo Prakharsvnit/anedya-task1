@@ -2,10 +2,12 @@ import React, { useState } from "react";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    username: "",
     password: "",
   });
+
+  const default_username = "admin";
+  const default_password = "admin";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,6 +16,15 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    if (
+      default_username === formData.username &&
+      default_password === formData.password
+    ) {
+      localStorage.setItem("isUserLoggedIn", true);
+      window.location.href = "/home";
+    } else {
+      alert("Invalid username or password");
+    }
   };
   return (
     <div className="flex justify-center items-center h-screen">
@@ -27,11 +38,10 @@ const Login = () => {
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
             type="text"
             placeholder="admin"
-            name="name"
-            value={formData.name}
+            name="username"
+            value={formData.username}
             onChange={handleChange}
           />
         </div>
@@ -44,7 +54,6 @@ const Login = () => {
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
             type="password"
             placeholder="admin"
             name="password"
