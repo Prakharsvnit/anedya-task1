@@ -3,7 +3,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem("isUserLoggedIn");
+    localStorage.setItem("isUserLoggedIn", "false");
     navigate("/");
   };
 
@@ -15,21 +15,18 @@ const Navbar = () => {
             <NavLink
               to="/dashboard1"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              activeClassName="text-white"
             >
               DASHBOARD1
             </NavLink>
             <NavLink
               to="/dashboard2"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              activeClassName="text-white"
             >
               DASHBOARD2
             </NavLink>
             <NavLink
               to="/dashboard3"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              activeClassName="text-white"
             >
               DASHBOARD3
             </NavLink>

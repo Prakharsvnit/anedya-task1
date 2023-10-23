@@ -21,8 +21,8 @@ const Login = () => {
       default_username === formData.username &&
       default_password === formData.password
     ) {
-      localStorage.setItem("isUserLoggedIn", true);
-      navigate("/home");
+      localStorage.setItem("isUserLoggedIn", "true");
+      navigate("/main");
     } else {
       alert("Invalid username or password");
     }
